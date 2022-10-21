@@ -1,24 +1,23 @@
 import axios from 'axios';
-const baseUrl='http://localhost:8081/api/v1.0/shopping';
-class UserService{
-	
-	saveUser(user){
-		return axios.post(baseUrl+'/register',user);
-	}
-getLogin(loginId) {
+const baseUrl = 'http://localhost:8081/api/v1.0/shopping';
+class UserService {
 
-	return axios.get(baseUrl+'/login');
-}
-  getUser(){
-	return axios.get(baseUrl+'/users/all');
-   }
-   getUserSearch(username){
-	return axios.get(baseUrl+'/user/search/'+username);
-   }
-   forgetPassword(username,newPassword){
-  	let loginId=localStorage.getItem('loginId');
-		return axios.put(baseUrl+'/'+username+'/forgetPassword/'+newPassword);
+	saveUser(user) {
+		return axios.post(baseUrl + '/register', user);
 	}
-	
+	getLogin(loginId) {
+
+		return axios.get(baseUrl + '/login/'+loginId);
+	}
+	getLogout(loginId) {
+
+		return axios.get(baseUrl + '/logout/' + loginId);
+	}	
+	forgetPassword(username) {
+		return axios.put(baseUrl + '/' + username + '/forgot');
+	}
+	resetPassword(resetPwd) {
+		return axios.post(baseUrl + '/password/reset', resetPwd);
+	}
 }
 export default new UserService()
