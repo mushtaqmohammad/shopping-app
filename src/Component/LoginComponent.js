@@ -31,7 +31,7 @@ class LoginComponent extends React.Component {
         e.preventDefault();
         if (this.state.loginId != '' && this.state.password != '') {
             UserService.getLogin(this.state.loginId).then(response => {
-                localStorage.setItem("loginId", this.state.loginId);
+                console.log(response.data.value);
                 this.props.history.push('/home');
             }).catch(err => {
                 this.setState({ error: 'Invalid username and password' });

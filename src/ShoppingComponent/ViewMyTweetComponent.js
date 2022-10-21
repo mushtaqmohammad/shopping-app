@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
-import PostService from '../services/PostService';
+import ProductService from '../services/ProductService';
 import logo from '../image/download.png';
 
 import { Rating } from 'primereact/rating';
-import './TweetStyle.css';
+import './ShopStyle.css';
 import { Dialog } from 'primereact/dialog';
 
 class ViewMyTweetComponent extends React.Component {
@@ -31,12 +31,12 @@ class ViewMyTweetComponent extends React.Component {
         
     }
    getReplyTweet(tweetId,tweetMessage){
-    PostService.getReplyTweet(tweetId).then(response => this.setState({ replyTweets: response.data}));
-    this.setState({showReplyTweet:true});
-    this.setState({reply:{}});
-    this.setState({message:tweetMessage});
-     this.setState({tweetId:tweetId});
-     this.setState({error:''});
+    // PostService.getReplyTweet(tweetId).then(response => this.setState({ replyTweets: response.data}));
+    // this.setState({showReplyTweet:true});
+    // this.setState({reply:{}});
+    // this.setState({message:tweetMessage});
+    //  this.setState({tweetId:tweetId});
+    //  this.setState({error:''});
 
    }
    saveReplyTweet(){
@@ -46,10 +46,10 @@ class ViewMyTweetComponent extends React.Component {
     reply["tweetMessageId"]=this.state.tweetId;
     reply["loginId"]=localStorage.getItem('loginId');
     console.log(reply["replyMessage"]);
-    PostService.saveReplyTweet(reply).then(response=>{
-        PostService.getReplyTweet(this.state.tweetId).then(response => this.setState({ replyTweets: response.data}));
+    // PostService.saveReplyTweet(reply).then(response=>{
+    //     PostService.getReplyTweet(this.state.tweetId).then(response => this.setState({ replyTweets: response.data}));
 
-    });
+    // });
 }
 else{
     this.setState({error:'Message size is long'});
@@ -68,20 +68,20 @@ else{
 }
 
 saveUpdateTweet(){
-    PostService.updateTweet(this.state.updateTweet,this.state.updateTweetId).then(response=>{
-       this.setState({showUpdateTweet:false});
-        this.componentDidMount();
-    })
+    // PostService.updateTweet(this.state.updateTweet,this.state.updateTweetId).then(response=>{
+    //    this.setState({showUpdateTweet:false});
+    //     this.componentDidMount();
+    // })
 }
     componentDidMount() {
-        PostService.getUserTweet().then(response => this.setState({ tweets: response.data}));
+        // PostService.getUserTweet().then(response => this.setState({ tweets: response.data}));
     }
 
     saveLike(username,id){
-         PostService.saveLike(username,id).then(response=>{this.componentDidMount()});
+        //  PostService.saveLike(username,id).then(response=>{this.componentDidMount()});
     }
     deleteTweet(id){
-        PostService.deleteTweet(id).then(response=>{this.componentDidMount()});
+        // PostService.deleteTweet(id).then(response=>{this.componentDidMount()});
     }
     
 

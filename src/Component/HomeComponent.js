@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'primereact/button';
 import UserService from '../services/UserService';
-import PostService from '../services/PostService';
+import ProductService from '../services/ProductService';
 import { Dialog } from 'primereact/dialog';
 import ViewTweetComponent from '../ShoppingComponent/ViewTweetComponent';
 import ViewMyTweetComponent from '../ShoppingComponent/ViewMyTweetComponent';
@@ -127,7 +127,7 @@ class HomeComponent extends React.Component {
         month: 'short',
 
       });
-      PostService.postTweet(tweet).then(response => { });
+      ProductService.postTweet(tweet).then(response => { });
       this.setState({ showPostTweet: false });
       console.log(tweet);
     }
